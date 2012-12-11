@@ -1,19 +1,19 @@
 %define upstream_name    Term-ProgressBar-Simple
 %define upstream_version 0.03
 
-Name:       perl-%{upstream_name}
-Version:    %perl_convert_version %{upstream_version}
-Release:    %mkrel 2
+Name:		perl-%{upstream_name}
+Version:	%perl_convert_version %{upstream_version}
+Release:	3
 
-Summary:    Simpler progress bars
-License:    GPL+ or Artistic
-Group:      Development/Perl
-Url:        http://search.cpan.org/dist/%{upstream_name}
-Source0:    http://www.cpan.org/modules/by-module/Term/%{upstream_name}-%{upstream_version}.tar.gz
+Summary:	Simpler progress bars
+License:	GPL+ or Artistic
+Group:		Development/Perl
+Url:		http://search.cpan.org/dist/%{upstream_name}
+Source0:	http://www.cpan.org/modules/by-module/Term/%{upstream_name}-%{upstream_version}.tar.gz
 
-BuildRequires: perl(Term::ProgressBar::Quiet)
-BuildArch: noarch
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}
+BuildRequires:	perl-devel
+BuildRequires:	perl(Term::ProgressBar::Quiet)
+BuildArch:	noarch
 
 %description
 Progress bars are handy - they tell you how much work has been done, how
@@ -28,24 +28,29 @@ way.
 %setup -q -n %{upstream_name}-%{upstream_version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-
-%{make}
+perl Makefile.PL INSTALLDIRS=vendor
+%make
 
 %check
-%{make} test
+%make test
 
 %install
-rm -rf %buildroot
 %makeinstall_std
 
-%clean
-rm -rf %buildroot
-
 %files
-%defattr(-,root,root)
 %doc CHANGES
 %{_mandir}/man3/*
-%perl_vendorlib/*
+%{perl_vendorlib}/*
+
+%changelog
+* Sun Apr 17 2011 Funda Wang <fwang@mandriva.org> 0.30.0-2mdv2011.0
++ Revision: 654304
+- rebuild for updated spec-helper
+
+* Sun Jan 03 2010 Jérôme Quelin <jquelin@mandriva.org> 0.30.0-1mdv2011.0
++ Revision: 485960
+- import perl-Term-ProgressBar-Simple
 
 
+* Sun Jan 03 2010 cpan2dist 0.03-1mdv
+- initial mdv release, generated with cpan2dist

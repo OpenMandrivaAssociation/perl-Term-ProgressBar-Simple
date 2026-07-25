@@ -2,14 +2,14 @@
 %define upstream_version 0.03
 
 Name:		perl-%{upstream_name}
-Version:	%perl_convert_version %{upstream_version}
-Release:	5
+Version:	%{upstream_version}
+Release:	6
 
 Summary:	Simpler progress bars
 License:	GPL+ or Artistic
 Group:		Development/Perl
-Url:		https://search.cpan.org/dist/%{upstream_name}
-Source0:	http://www.cpan.org/modules/by-module/Term/%{upstream_name}-%{upstream_version}.tar.gz
+Url:		https://metacpan.org/dist/Term-ProgressBar-Simple
+Source0:	https://cpan.metacpan.org/authors/id/E/EV/EVDB/Term-ProgressBar-Simple-%{upstream_version}.tar.gz
 
 BuildRequires:	make
 BuildRequires:	perl-devel
